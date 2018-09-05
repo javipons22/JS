@@ -1,38 +1,36 @@
 <<<<<<< HEAD
 
 
-# 1 ----Syntax Parsers , Execution Context and lexical environments
+## 1 ----Syntax Parsers , Execution Context and lexical environments
 
-## Syntax Parsers
+### Syntax Parsers
 A program that reads your code and determines what it does and if its grammar is valid
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
 
-## Lexical environment
+### Lexical environment
 Where something sits physically in the code you write
 donde escribis algo es importante
 define donde se pone en la memoria
 
-## Execution context
+### Execution context
 A wrapper to help manage the code that is running
 It can contain things beyond what youve written inyour code
 Contiene el codigo y mas
 
 
-# 2 ---- Name/Value Pairs and Objects
+## 2 ---- Name/Value Pairs and Objects
 
 
-## Name / Value Pair
-
+### Name / Value Pair
 A name which maps to a unique value
 The name may be defined more than oncontextmenu, but can only have one value in any given context
 that value may be more name/value pairs
 
-## Object
-
+### Object
 A collection of name value pairs
 
 
-# 3 ----  The Global Environment and The Global Object
+## 3 ----  The Global Environment and The Global Object
 
 Cuando el código se ejecuta en JavaScript, se ejecuta dentro de un CONTEXTO DE EJECUCION (EXECUTION CONTEXT).
 Hay mas de uno. El principal es el global.
@@ -49,7 +47,7 @@ Cuando decimos global en javascript significa:
 En JavaScript, cuando creas variables y funciones, y no estás dentro de una función, esas variables y funciones se adjuntan al objeto global.
 
 
-# 4 ----  The Execution Context - Creation and Hoisting
+## 4 ----  The Execution Context - Creation and Hoisting
 
 El execution context es creado en dos partes. CREATION PHASE (crea el global object ,this y la referencia al outer environment.) Tambienhace un setup memory space for variables and functions (HOISTING).
 
@@ -71,7 +69,7 @@ function a() { // se declara la funcion
 //esto devuelve el console log : hola sin problemas
 ```
 
-# 5 ----  Conceptual Aside: Javascript and 'undefined'
+## 5 ----  Conceptual Aside: Javascript and 'undefined'
 
 undefined es un VALOR especial de javascript que significa que a la variable no se le asigno nada.
 
@@ -81,7 +79,7 @@ var a; //su valor es undefined.
 
 
 
-# 6 ----   The Execution Context - Code Execution
+## 6 ----   The Execution Context - Code Execution
 
 EXECUTION PHASE. tiene todos los elementos del CREATION PHASE y ejecuta el codigo linea por linea.
   ```javascript
@@ -98,46 +96,51 @@ var a = 'Hello World!';
 console.log(a); // devuelve Hello World!
   ```
 
-# -----------------------------------
-# 13. Conceptual Aside: Single Threaded, Synchronous Execution
 
-Single Threaded: Un comando a la vez.
+## 13. Conceptual Aside: Single Threaded, Synchronous Execution
 
-Synchronous: una linea a la vez y en orden
+### Single Threaded
+Un comando a la vez.
 
-# -----------------------------------
-# 14. Function Invocation and the Execution Stack
+### Synchronous
+una linea a la vez y en orden
 
-Invocation: running a function. ejecutar una funcion. (con parentesis () ).
+
+## 14. Function Invocation and the Execution Stack
+
+### Invocation 
+running a function. ejecutar una funcion. (con parentesis () ).
 
 Primero se crea el global execution context. Cuando se invoca la funcion se agrega un execution context y se lo pone en el execution execution stack . ejemplo:
 
-
-#primero se ejecuta el global execution context
+ ```javascript
+//primero se ejecuta el global execution context
 function b() {
 
 }
 
 function a() {
-    b(); # se agrega b al execution stack con las dos etapas (CREATION PHASE Y EXECUTION PHASE)
+    b(); // se agrega b al execution stack con las dos etapas (CREATION PHASE Y EXECUTION PHASE)
 }
 
-a(); # cuando el global llega a a() se agrega a al execution stack con las dos etapas (CREATION PHASE Y EXECUTION PHASE)
-
+a(); // cuando el global llega a a() se agrega a al execution stack con las dos etapas (CREATION PHASE Y EXECUTION PHASE)
+ ```
 El stack se ve como algo asi 
 
------------------------
-        b() # cuando se ejecuta se hace un pop off y sigue con a()
+ ```
+        b() cuando se ejecuta se hace un pop off y sigue con a()
     Execution context
-   (create and execute)
------------------------
-        a() # cuando se ejecuta se hace un pop off y sigue con global
+   create and execute
+ ```
+  ```
+        a() cuando se ejecuta se hace un pop off y sigue con global
     Execution context 
-   (create and execute)
------------------------
+   create and execute
+ ```
+  ```
  Global Execution Context
-(created and code is executed)
-------------------------
+created and code is executed
+ ```
 
 En este cuadro se ejecutan las funciones de arriba hacia abajo linea por linea sincronamente y sigue con el global
 
