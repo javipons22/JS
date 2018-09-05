@@ -38,7 +38,7 @@ windows object es el global object en el browser.
 En JavaScript, cuando creas variables y funciones, y no estás dentro de una función, esas variables y funciones se adjuntan al objeto global.
 
 
-## 4 ----  The Execution Context - Creation and Hoisting
+## 4. The Execution Context - Creation and Hoisting
 
 El execution context es creado en dos partes. CREATION PHASE (crea el global object ,this y la referencia al outer environment.) Tambienhace un setup memory space for variables and functions (HOISTING).
 
@@ -60,7 +60,7 @@ function a() { // se declara la funcion
 //esto devuelve el console log : hola sin problemas
 ```
 
-## 5 ----  Conceptual Aside: Javascript and 'undefined'
+## 5. Conceptual Aside: Javascript and 'undefined'
 
 undefined es un VALOR especial de javascript que significa que a la variable no se le asigno nada.
 
@@ -70,7 +70,7 @@ var a; //su valor es undefined.
 
 
 
-## 6 ----   The Execution Context - Code Execution
+## 6. The Execution Context - Code Execution
 
 EXECUTION PHASE. tiene todos los elementos del CREATION PHASE y ejecuta el codigo linea por linea.
   ```javascript
