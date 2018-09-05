@@ -61,25 +61,18 @@ El execution context es creado en dos partes. CREATION PHASE (crea el global obj
 
 En el hoisting a las variables no les asigna el valor , sino que los deja como (UNDEFINED). 
 ```javascript
-console.log(a); 
- 
-//devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
-
+console.log(a); //devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
 
 var a = 'hello world';
 ```
 
 A las funciones las guarda en memoria por eso se pueden ejecutar antes de ser declaradas:
 ```javascript
-a(); 
-
-//se llama la funcion 
+a(); //se llama la funcion 
 
 function a() { // se declara la funcion
     console.log('hola'); 
 }
-
-
 
 //esto devuelve el console log : hola sin problemas
 ```
@@ -88,26 +81,28 @@ function a() { // se declara la funcion
 
 undefined es un VALOR especial de javascript que significa que a la variable no se le asigno nada.
 
-var a; 
+  ```javascript
+var a; //su valor es undefined.
+  ```
 
-su valor es undefined.
 
 
 # 6 ----   The Execution Context - Code Execution
 
 EXECUTION PHASE. tiene todos los elementos del CREATION PHASE y ejecuta el codigo linea por linea.
-
+  ```javascript
 function b() {
     console.log('Called b!');
 }
 
-b(); # devuelve en consola called b!
+b(); // devuelve en consola called b!
 
-console.log(a); # devuelve undefined
+console.log(a); // devuelve undefined
 
 var a = 'Hello World!';
 
-console.log(a); # devuelve Hello World!
+console.log(a); // devuelve Hello World!
+  ```
 
 # -----------------------------------
 # 13. Conceptual Aside: Single Threaded, Synchronous Execution
