@@ -60,24 +60,29 @@ En JavaScript, cuando creas variables y funciones, y no estás dentro de una fun
 El execution context es creado en dos partes. CREATION PHASE (crea el global object ,this y la referencia al outer environment.) Tambienhace un setup memory space for variables and functions (HOISTING).
 
 En el hoisting a las variables no les asigna el valor , sino que los deja como (UNDEFINED). 
-
+```javascript
 console.log(a); 
+ 
+//devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
 
-devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
 
 var a = 'hello world';
+```
 
 A las funciones las guarda en memoria por eso se pueden ejecutar antes de ser declaradas:
-
+```javascript
 a(); 
 
-se llama la funcion 
+//se llama la funcion 
 
-function a() { # se declara la funcion
+function a() { // se declara la funcion
     console.log('hola'); 
 }
 
-esto devuelve el console log : hola sin problemas
+
+
+//esto devuelve el console log : hola sin problemas
+```
 
 # 5 ----  Conceptual Aside: Javascript and 'undefined'
 
