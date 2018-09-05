@@ -1,5 +1,8 @@
-## 1. Syntax Parsers , Execution Context and lexical environments
+# Las Partes raras de JavaScript
 
+
+
+## 1. Syntax Parsers , Execution Context and lexical environments
 
 `Syntax Parsers:` A program that reads your code and determines what it does and if its grammar is valid
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
@@ -13,6 +16,9 @@ It can contain things beyond what youve written inyour code
 Contiene el codigo y mas
 
 
+
+
+
 ## 2. Name/Value Pairs and Objects
 
 
@@ -21,6 +27,8 @@ The name may be defined more than oncontextmenu, but can only have one value in 
 that value may be more name/value pairs
 
 `Object:` A collection of name value pairs
+
+
 
 
 ## 3. The Global Environment and The Global Object
@@ -36,6 +44,8 @@ windows object es el global object en el browser.
 
 
 En JavaScript, cuando creas variables y funciones, y no estás dentro de una función, esas variables y funciones se adjuntan al objeto global.
+
+
 
 
 ## 4. The Execution Context - Creation and Hoisting
