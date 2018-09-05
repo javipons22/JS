@@ -737,7 +737,7 @@ console.log(d);
 
 // el console.log devuelve 'hello' para los dos , c y d
  ```
-# by reference (even as parameters)
+### by reference (even as parameters)
 
 ```javascript
 function changeGreeting(obj) {
@@ -845,14 +845,16 @@ c.log();
 
 ```
 
-# -----------------------------------
-# 38. Conceptual Aside: Arrays - Collections of Anything
 
+## 38. Conceptual Aside: Arrays - Collections of Anything
+
+```javascript
 var arr = new Array();
 var arr = [1,2,3];
+```
 
-# En javascript los arrays pueden contener cualquier type
-
+En javascript los arrays pueden contener cualquier type
+```javascript
 var arr = [
     1, 
    
@@ -869,54 +871,61 @@ var arr = [
 ];
 
 console.log(arr);
-arr[3](arr[2].name); # devuelve holajavi
+arr[3](arr[2].name); // devuelve holajavi
+```
 
 
-# -----------------------------------
-# 39. 'arguments' and spread
+## 39. 'arguments' and spread
 
 En el execution context de la funcion tambien se crea un keyword especial llamado 'arguments', tiene todos los valores que pasas a la funcion.
 
-argument: parametros que pasas a una funcion. Javascript gives you a keyword of the same name that contains them all
+`argument:` parametros que pasas a una funcion. Javascript gives you a keyword of the same name that contains them all
 
+```javascript
 funcion greet(first,last,lan){
     console.log(first);
     console.log(last);
     console.log(lan);
 }
 
-greet(); # al no pasar argumentos ,no da error , settea los argumentos como undefined
-# se pueden pasar parte de parametros , uno o dos (en este caso) y dejar otros como undefined.
+greet(); // al no pasar argumentos ,no da error , settea los argumentos como undefined
 
+```
+Se pueden pasar parte de parametros , uno o dos (en este caso) y dejar otros como undefined.
+```javascript
 funcion greet(first,last,lan){
 
-    lan = lan || 'español'; # default parameter .
+    lan = lan || 'español'; // default parameter .
 
     if(arguments.length === 0){
         console.log('missing parameters');
-        return; # deja de ejecutar la funcion , las lineas siguientes no se ejecutan
+        return; // deja de ejecutar la funcion , las lineas siguientes no se ejecutan
     }
 
     console.log(first);
     console.log(last);
     console.log(lan);
-    console.log(arguments); # contiene una lista de todos los argumentos que se pasaron , es un arraylike (no es exactamente un array porque no tiene todas las funciones del array)
+    console.log(arguments); // contiene una lista de todos los argumentos que se pasaron , es un arraylike (no es exactamente un array porque no tiene todas las funciones del array)
 }
-
-# Spread
+```
+**Spread**
+```javascript
 funcion greet(first,last,lan, ...other){
 
 }
 
-# ...other es el spread y todas los argumentos extra se ponen en un array determinado
+// ...other es el spread y todas los argumentos extra se ponen en un array determinado
 
-greet('john', 'doe', 'es', '111 mainst', 'NY');# los ultimos dos entrarian al array del spread
+greet('john', 'doe', 'es', '111 mainst', 'NY');// los ultimos dos entrarian al array del spread
+
+```
 
 
+## 40. Framework Aside: Function Overloading
 
-# -----------------------------------
-# 40. Framework Aside: Function Overloading
+Lo siguiente es un ejemplo de function overloading:
 
+```javascript
 function greet(firstname, lastname, language) {
         
     language = language || 'en';
@@ -941,41 +950,43 @@ function greetSpanish(firstname, lastname) {
 
 greetEnglish('John', 'Doe');
 greetSpanish('John', 'Doe');
+```
 
-# -----------------------------------
-# 41. Conceptual Aside: Syntax Parsers
+## 41. Conceptual Aside: Syntax Parsers
 
-el syntax parser lee letra por letra el codigo y define que se va a realizar .
-
-# -----------------------------------
-# 42. Dangerous Aside: Automatic Semicolon Insertion
-
-los semicolon ; son opcionales , javascript los pone automaticamente . Pero como regla siempre hay que poner semicolon para evitar confusiones.
-
-ejemplo . 
-
-return #en una sola linea se traduce a return; (lo que sigue en las siguientes lineas no lo ejecuta)
-
-# -----------------------------------
-# 43. Framework Aside: Whitespace
-
-whitespace: invisible caracters that create space in your code.
-En frameworks hay mucho espacio y comments.
+El syntax parser lee letra por letra el codigo y define que se va a realizar .
 
 
-# -----------------------------------
-# 44. Immediately Invoked Functions Expressions (IIFEs)
+## 42. Dangerous Aside: Automatic Semicolon Insertion
 
-# using an Immediately Invoked Function Expression (IIFE)
+Los semicolon `;` son opcionales , javascript los pone automaticamente . Pero como regla siempre hay que poner semicolon para evitar confusiones.
+
+Ejemplo:
+```javascript
+return // en una sola linea se traduce a return; (lo que sigue en las siguientes lineas no lo ejecuta)
+```
+
+## 43. Framework Aside: Whitespace
+
+`whitespace:` invisible caracters that create space in your code.
+>En frameworks hay mucho espacio y comments.
+
+
+
+## 44. Immediately Invoked Functions Expressions (IIFEs)
+
+### Using an Immediately Invoked Function Expression (IIFE)
+```javascript
 var greeting = function(name) {
     
     return 'Hello ' + name;
     
 }('John');
 
-console.log(greeting);
+```
 
-# IIFE
+### IIFE
+```javascript
 var firstname = 'John';
 
 (function(name) {
@@ -983,81 +994,17 @@ var firstname = 'John';
     var greeting = 'Inside IIFE: Hello';
     console.log(greeting + ' ' + name);
     
-}(firstname)); # IIFE
+}(firstname)); // IIFE
 
+```
 
 
-# -----------------------------------
-# 45. Framework Aside: IIFEs and Safe Code
+## 45. Framework Aside: IIFEs and Safe Code
 
+>Lo que permiten las IIFEs es evitar que al haber muchos archivos , el nombre de una funcion colisione con otra
 
-Lo que permiten las IIFEs es evitar que al haber muchos archivos , el nombre de una funcion colisione con otra
 
+## 46. Understanding Closures
 
-# -----------------------------------
-# 46. Understanding Closures
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-# JS
->>>>>>> d4257cd076bc02de2af1043eba12290302b02b1c
