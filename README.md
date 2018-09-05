@@ -144,80 +144,82 @@ created and code is executed
 
 En este cuadro se ejecutan las funciones de arriba hacia abajo linea por linea sincronamente y sigue con el global
 
+ ```javascript
 function a() {
-    b();# 2.ejecuta b()
-    var c; # 4. se pone c como undefined
+    b(); // 2.ejecuta b()
+    var c; // 4. se pone c como undefined
 }
 
 function b() {
-    var d; # 3. se pone d como variable undefined
+    var d; // 3. se pone d como variable undefined
 }
 
-a(); # 1. ejecuta a()
-var d; #5. se pone de como undefined
+a(); // 1. ejecuta a()
+var d; // 5. se pone d como undefined
+ ```
 
 
 
-# -----------------------------------
-# 15. Functions, Context, and Variable Environments
+## 15. Functions, Context, and Variable Environments
 
 Variable environment: Donde vive la variable y como se relaciona con otras en memoria. cada execution context tiene su propio variable environment
-
+ ```javascript
 function b() {
     var myVar;
-    console.log(myVar);  # variable environment es b()
+    console.log(myVar);  // variable environment es b()
 }
 
 function b() {
     var myVar = 2;
-    console.log(myVar); # variable environment es a()
+    console.log(myVar); // variable environment es a()
     b();
 }
 
-var myVar = 1; # variable environment es el global execution context
+var myVar = 1; // variable environment es el global execution context
 console.log(myVar);
 a();
 
-# devuelve en consola:
+// devuelve en consola:
 
-# 1
-# 2
-# undefined
-
-#----------------
-
-
+// 1
+// 2
+// undefined
+ ```
+ 
+ ```javascript
 function b() {
     var myVar;
-    console.log(myVar);  # variable environment es b()
+    console.log(myVar);  // variable environment es b()
 }
 
 function b() {
     var myVar = 2;
-    console.log(myVar); # variable environment es a()
+    console.log(myVar); // variable environment es a()
     b();
 }
 
-var myVar = 1; # variable environment es el global execution context
+var myVar = 1; // variable environment es el global execution context
 console.log(myVar);
 a();
-console.log(myVar); # que va a devolver?
+console.log(myVar); // que va a devolver?
 
-# devuelve en consola:
+// devuelve en consola:
 
-# 1
-# 2
-# undefined
-# 1
+// 1
+// 2
+// undefined
+// 1
+ ```
 
 todo esto sucede porque cada global execution context tiene su propia memoria para variables . o variable environment y cada variable vive en su contexto.
 
 
-# -----------------------------------
-# 16. The Scope Chain
 
+## 16. The Scope Chain
+
+ ```javascript
 function b() {
-    console.log(myVar); # que va a devolver?
+    console.log(myVar); // que va a devolver?
 }
 
 function a() {
@@ -228,19 +230,20 @@ function a() {
 var myVar = 1;
 a(); 
 
-# devuelve en consola:
-# 1
-
+// devuelve en consola:
+// 1
+ ```
+ 
 cuando se ejecuta una variable se busca en el execution context, si no lo encuentra lo busca en el OUTER ENVIRONMENT, este outer environment no es el siguiente en el stack sino el lexical environment o donde esta ESCRITA la funcion. Entonces b() lexicamente esta en el global environment . por eso myVar es 1. El outer reference (elemento en el creation phase), apunta al lexical environment. 
 
 Esto se llama Scope Chain.
 
-# ---------------------
+ ```javascript
 
 function a() {
 
     function b() {
-        console.log(myVar); # que va a devolver?
+        console.log(myVar); // que va a devolver?
     }
 
     var myVar = 2;
@@ -249,20 +252,20 @@ function a() {
 
 var myVar = 1;
 a();
-b(); # va a dar error porque no esta en el global.
+b(); // va a dar error porque no esta en el global.
 
-# devuelve en consola:
-# 2
+// devuelve en consola:
+// 2
 
-
-# ---------------------
+ ```
+ ```javascript
 
 function a() {
 
     function b() {
-        console.log(myVar); # que va a devolver?
+        console.log(myVar); // que va a devolver?
     }
-    # si no encuentra myVar en a() lo busca en el siguiente en el scope chain. es decir el global
+    // si no encuentra myVar en a() lo busca en el siguiente en el scope chain. es decir el global
     b();
 }
 
@@ -270,41 +273,47 @@ var myVar = 1;
 a();
 
 
-# devuelve en consola:
-# 1
+// devuelve en consola:
+// 1
 
+ ```
 
-# -----------------------------------
-# 17. Scope, ES6, and let
+## 17. Scope, ES6, and let
 
-Scope : where a variable is available in your code.
+###Scope
+where a variable is available in your code.
 
-let : block scoping . No se puede usar hasta que el execution phase la determine. En vez de dar undefined da Error. y esta disponible SOLO dentro del block.
+###let 
+block scoping . No se puede usar hasta que el execution phase la determine. En vez de dar undefined da Error. y esta disponible SOLO dentro del block.
 en un for loop da una variable distinta cada vez que el for loop se ejecuta.
 
-block : lo que esta adentro de llaves {}.
+###block
+lo que esta adentro de llaves {}.
 
 
-# -----------------------------------
-# 18. What About Asynchronous Callbacks?
 
-Asynchronous: More than one at a time 
+## 18. What About Asynchronous Callbacks?
 
-Como hace javascript al ser sincrono ,ejecutar asincronamente?. #pregunta
+###Asynchronous
+More than one at a time 
+
+###pregunta
+Como hace javascript al ser sincrono ,ejecutar asincronamente?
 Existe el javascript engine, con  el rendering engine, http request, etc , que se ejecutan asincronamente.
 
-#Respuesta
+###Respuesta
 Existe el EVENT QUEUE. cuando el stack esta limpio (se ejecutan todas las funciones) , javascript mira en el EVENT QUEUE. y cuando se ejecuta el event lo agrega al stack.
 
-# long running function
+ ```javascript
+// long running function
 function waitThreeSeconds() {
     var ms = 3000 + new Date().getTime();
     while (new Date() < ms){}
-    console.log('finished function'); # la funcion espera 3 segundos a ser ejecutada
+    console.log('finished function'); // la funcion espera 3 segundos a ser ejecutada
 }
 
 function clickHandler() {
-    console.log('click event!'); # da un console log al hacer click en el document   
+    console.log('click event!'); // da un console log al hacer click en el document   
 }
 
 # listen for the click event
@@ -312,74 +321,87 @@ document.addEventListener('click', clickHandler);
 
 
 waitThreeSeconds();
-console.log('finished execution'); # cuando termina devuelve el console log
+console.log('finished execution'); // cuando termina devuelve el console log
+ ```
+Pero cuando se da el evento? (console.log('click event!'))
 
-# pero cuando se da el evento? (console.log('click event!'))
+###Respuesta
 
-#Respuesta
+si se da click dentro de los 3 segundos el console log dara:
 
-#si se da click dentro de los 3 segundos el console log dara:
+finished function
+finished execution
+click event! 
 
-# finished function
-# finished execution
-# click event! 
-
-# todo porque se mira el event queue con eventos solo cuando todos los execution context de funciones termina.
+todo porque se mira el event queue con eventos solo cuando todos los execution context de funciones termina.
 
 
-# -----------------------------------
-# 19. Conceptual Aside: Types and Javascript
 
-Dynamic Typing: You dont tell the engine what type of data a variable holds. it figures it out while your code is running. # variables can hold different types of values because its all figured out during execution.
+## 19. Conceptual Aside: Types and Javascript
+
+###Dynamic Typing
+You dont tell the engine what type of data a variable holds. it figures it out while your code is running.  variables can hold different types of values because its all figured out during execution.
 
 otros lenguajes de programacion tienen el static typing. le decis antes que tipo de variable es
 ejemplo:
-
-bool isNew = 'hello'; # error
+ ```
+bool isNew = 'hello'; //error
+ ```
 
 en javascript es dinamico , no hace falta marcar que tipo es la variable.
 
 
-# -----------------------------------
-# 20. Primitive Types
+
+### 20. Primitive Types
 
 hay 6 primitive types( tipo de dato que representa un solo valor , no es un objeto):
 
-undefined (lack of existance);
-null (lack of existance.);
-boolean (true or false);
-number(floating point number no tiene integer ni otro , es solo number);
-string('caracteres' o "caracteres");
-symbol(nuevo en ES6);
-
-# -----------------------------------
-# 21. Conceptual Aside: Operators
-
-Operators: a special function that is written differently. Toman dos parametros y DEVUELVEN UN RESULTADO.
+* undefined (lack of existance);
+* null (lack of existance.);
+* boolean (true or false);
+* number(floating point number no tiene integer ni otro , es solo number);
+* string('caracteres' o "caracteres");
+* symbol(nuevo en ES6);
 
 
-infix notation : la funcion esta en medio de los dos parametros
-prefix notation: la funcion esta antes de los dos parametros.
+## 21. Conceptual Aside: Operators
 
+### Operators
+a special function that is written differently. Toman dos parametros y DEVUELVEN UN RESULTADO.
+
+
+###infix notation
+la funcion esta en medio de los dos parametros
+
+### prefix notation
+la funcion esta antes de los dos parametros.
+
+ ```
 infix: 3 + 4;
-prefix: +(3,4); # no anda en javascript la funcion con el signo + es solo para ejemplo
+prefix: +(3,4);  // no anda en javascript la funcion con el signo + es solo para ejemplo
+ ```
 
 
-# -----------------------------------
-# 22. Operator Precedence and Associativity
+##22. Operator Precedence and Associativity
 
-Operator precedence : which operator function gets called first. Higher precedence wins. when there are more than one in a line.
+### Operator precedence 
+which operator function gets called first. Higher precedence wins. when there are more than one in a line.
 
 
-associativity: what order operator functions get called in: left-to-right or right-to-left. when functions have the same precedence.
-
+### Associativity
+what order operator functions get called in: left-to-right or right-to-left. when functions have the same precedence.
+ ```
 https:#developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
-
+ ```
+ 
+```javascript
 var a = 3 + 4 * 5;
 console.log(a);
 
 # devuelve 23 por la presedencia
-
+ ```
+ 
+```javascript
 var a = 2, b = 3 , c = 4;
 
 a = b = c;
@@ -388,8 +410,8 @@ console.log(a);
 console.log(b);
 console.log(c);
 
-# devuelve todo 4 (para las tres variables) porque el assignment tiene associativity right to left. por eso es b = c y despues a es igual a ese resultado
-
+// devuelve todo 4 (para las tres variables) porque el assignment tiene associativity right to left. por eso es b = c y despues a es igual a ese resultado
+ ```
 # -----------------------------------
 # 24. Conceptual Aside: Coercion
 
