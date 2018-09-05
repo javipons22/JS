@@ -3,20 +3,20 @@
 
 # 1 ----Syntax Parsers , Execution Context and lexical environments
 
-## Syntax Parsers
+* Syntax Parsers
 
 A program that reads your code and determines what it does and if its grammar is valid
 
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
 
-## Lexical environment
+* Lexical environment
 
 Where something sits physically in the code you write
 
 donde escribis algo es importante
 define donde se pone en la memoria
 
-## Execution context
+* Execution context
 
 A wrapper to help manage the code that is running
 It can contain things beyond what youve written inyour code
