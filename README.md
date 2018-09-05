@@ -280,28 +280,28 @@ a();
 
 ## 17. Scope, ES6, and let
 
-###Scope
+### Scope
 where a variable is available in your code.
 
-###let 
+### let 
 block scoping . No se puede usar hasta que el execution phase la determine. En vez de dar undefined da Error. y esta disponible SOLO dentro del block.
 en un for loop da una variable distinta cada vez que el for loop se ejecuta.
 
-###block
+### block
 lo que esta adentro de llaves {}.
 
 
 
 ## 18. What About Asynchronous Callbacks?
 
-###Asynchronous
+### Asynchronous
 More than one at a time 
 
-###pregunta
+### pregunta
 Como hace javascript al ser sincrono ,ejecutar asincronamente?
 Existe el javascript engine, con  el rendering engine, http request, etc , que se ejecutan asincronamente.
 
-###Respuesta
+### Respuesta
 Existe el EVENT QUEUE. cuando el stack esta limpio (se ejecutan todas las funciones) , javascript mira en el EVENT QUEUE. y cuando se ejecuta el event lo agrega al stack.
 
  ```javascript
@@ -325,7 +325,7 @@ console.log('finished execution'); // cuando termina devuelve el console log
  ```
 Pero cuando se da el evento? (console.log('click event!'))
 
-###Respuesta
+### Respuesta
 
 si se da click dentro de los 3 segundos el console log dara:
 
@@ -339,7 +339,7 @@ todo porque se mira el event queue con eventos solo cuando todos los execution c
 
 ## 19. Conceptual Aside: Types and Javascript
 
-###Dynamic Typing
+### Dynamic Typing
 You dont tell the engine what type of data a variable holds. it figures it out while your code is running.  variables can hold different types of values because its all figured out during execution.
 
 otros lenguajes de programacion tienen el static typing. le decis antes que tipo de variable es
@@ -370,7 +370,7 @@ hay 6 primitive types( tipo de dato que representa un solo valor , no es un obje
 a special function that is written differently. Toman dos parametros y DEVUELVEN UN RESULTADO.
 
 
-###infix notation
+### infix notation
 la funcion esta en medio de los dos parametros
 
 ### prefix notation
@@ -382,7 +382,7 @@ prefix: +(3,4);  // no anda en javascript la funcion con el signo + es solo para
  ```
 
 
-##22. Operator Precedence and Associativity
+## 22. Operator Precedence and Associativity
 
 ### Operator precedence 
 which operator function gets called first. Higher precedence wins. when there are more than one in a line.
@@ -412,75 +412,83 @@ console.log(c);
 
 // devuelve todo 4 (para las tres variables) porque el assignment tiene associativity right to left. por eso es b = c y despues a es igual a ese resultado
  ```
-# -----------------------------------
-# 24. Conceptual Aside: Coercion
 
-Coercion: converting a value from one type to another.
+## 24. Conceptual Aside: Coercion
+
+### Coercion
+converting a value from one type to another.
+
+ ```javascript
 
 var a = 'hello' + ' world';
 console.log(a); #devuelve hello world
 
 var a = 1 + '2';
 console.log(a); # devuelve '12' porque hizo coersion. 
+ ```
 
 
-# -----------------------------------
-# 25. Comparison Operators
+### 25. Comparison Operators
 
+ ```javascript
 console.log(1 < 2 < 3);
 #devuelve true
 
 console.log(3 < 2 < 1);
-#devuelve true ¿porque?
+// devuelve true 
+ ```
+### ¿porque?
 
-#Respuesta
+### Respuesta
 primero hay que ver la associativity (right-to left) entones se ejecuta 3 < 2 lo que devuelve false , entonces queda ( false < 1 ) entonces false coersiona a 0 y queda ( 0 < 1 ) lo que devuelve true
 
 
-#formas sin cohersion
-# el triple igual (===) "strict inequality"
+### formas sin cohersion
+el triple igual (===) "strict inequality"
 
+ ```javascript
 console.log(3 == 3);
-# devuelve true
+// devuelve true
 
 console.log("3" == 3);
-#true
+// true
 
 console.log("3" === 3)
-#false (no cohersiona)
+// false (no cohersiona)
+ ```
 
-# USAR SIEMPRE ===
-
-# -----------------------------------
-# 26. Equality Comparisons Table
+### USAR SIEMPRE ===
 
 
-#ver https:#developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+## 26. Equality Comparisons Table
+
+ ```
+ver https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+ ```
 
 
 
 
-# -----------------------------------
-# 27. Existence and Booleans
+## 27. Existence and Booleans
 
 La funcion Boolean(); cohersiona un valor a true o false.
 entonces:
-
-Boolean(undefined);#devuelve false
-Boolean(null);#devuelve false
-Boolean("");#devuelve false
-Boolean(0);#devuelve false
-
-#If cohersiona a true o false
-
+ ```
+Boolean(undefined);  //devuelve false
+Boolean(null);  //devuelve false
+Boolean("");  //devuelve false
+Boolean(0);  //devuelve false
+ ```
+If cohersiona a true o false
+ ```javascript
 var a;
 
 
-if (a) { # determina si a existe, como el valor es undefined, cohersiona a false y el if no es ejecutado 
+if (a) { //  determina si a existe, como el valor es undefined, cohersiona a false y el if no es ejecutado 
   console.log('Something is there.');  
 }
 
-#CUIDADO con el cero que cohersiona a false (si se quiere verificar que a exista o tenga un valor , cuando sea 0 no va a ejecutar el if) , salvo que se realice lo siguiente
+// CUIDADO con el cero que cohersiona a false (si se quiere verificar que a exista o tenga un valor , cuando sea 0 no va a ejecutar el if) , salvo que se realice lo siguiente
 
 var a = 0;
 
@@ -488,36 +496,36 @@ if (a || a === 0) {
   console.log('Something is there.');  
 }
 
-# ejecuta el if (en el caso anterior no)
+//  ejecuta el if (en el caso anterior no)
+
+ ```
 
 
-
-# -----------------------------------
-# 27. Default Values
-
+## 27. Default Values
+ ```javascript
 function greet(name) {
-    name = name || '<Your name here>'; # en este caso si no pasamos variable a name es undefined por lo tanto cohesiona a false , lo que lleva a que en el or se setee un 'default value'(en este caso <Your name here>)
+    name = name || '<Your name here>'; // en este caso si no pasamos variable a name es undefined por lo tanto cohesiona a false , lo que lleva a que en el or se setee un 'default value'(en este caso <Your name here>)
     console.log('Hello ' + name);    
 }
 
-greet('Tony'); # devuelve Hello Tony
-greet(); # devuelve Hello <Your name here>
+greet('Tony'); // devuelve Hello Tony
+greet(); // devuelve Hello <Your name here>
+ ```
 
 
-# -----------------------------------
-# 28. Framework Aside: Default Values
+## 28. Framework Aside: Default Values
 
 En el HTML los script ponen el codigo en una lista de acuerdo al orden en que son llamados
 
-ej 
-
+ej .
+ ```HTML
 <script src="1.js"></script>
 
-1.js tiene la siguiente variable (var libraryName = "uno";)
+<!-- js tiene la siguiente variable (var libraryName = "uno";) -->
 <script src="2.js"></script>
 
-2.js tiene la siguiente variable (var libraryName = "dos"; y console.log(libraryName))
-
+<!-- 2.js tiene la siguiente variable (var libraryName = "dos"; y console.log(libraryName)) -->
+ ```
 pone el contenido de 1.js arriba de 2.js entonces el resultado del console log es "dos", porque se reemplaza la variable
 
 para que no se reemplazen las variables en los frameworks generalmente hacen esto:
