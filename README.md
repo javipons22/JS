@@ -4,14 +4,17 @@
 
 ## 1. Syntax Parsers , Execution Context and lexical environments
 
-`Syntax Parsers:` A program that reads your code and determines what it does and if its grammar is valid
+#### Syntax Parsers
+A program that reads your code and determines what it does and if its grammar is valid
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
 
-`Lexical environment:` Where something sits physically in the code you write
+#### Lexical environment
+Where something sits physically in the code you write
 donde escribis algo es importante
 define donde se pone en la memoria
 
-`Execution context:` A wrapper to help manage the code that is running
+#### Execution context
+A wrapper to help manage the code that is running
 It can contain things beyond what youve written inyour code
 Contiene el codigo y mas
 
@@ -22,11 +25,13 @@ Contiene el codigo y mas
 ## 2. Name/Value Pairs and Objects
 
 
-`Name / Value Pair:`A name which maps to a unique value
+#### Name / Value Pair
+A name which maps to a unique value
 The name may be defined more than oncontextmenu, but can only have one value in any given context
 that value may be more name/value pairs
 
-`Object:` A collection of name value pairs
+#### Object
+A collection of name value pairs
 
 
 
