@@ -1,5 +1,6 @@
 ## 1. Syntax Parsers , Execution Context and lexical environments
 
+
 `Syntax Parsers:` A program that reads your code and determines what it does and if its grammar is valid
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
 
@@ -12,7 +13,7 @@ It can contain things beyond what youve written inyour code
 Contiene el codigo y mas
 
 
-## 2 ---- Name/Value Pairs and Objects
+## 2. Name/Value Pairs and Objects
 
 
 `Name / Value Pair:`A name which maps to a unique value
@@ -22,7 +23,7 @@ that value may be more name/value pairs
 `Object:` A collection of name value pairs
 
 
-## 3 ----  The Global Environment and The Global Object
+## 3. The Global Environment and The Global Object
 
 Cuando el código se ejecuta en JavaScript, se ejecuta dentro de un CONTEXTO DE EJECUCION (EXECUTION CONTEXT).
 Hay mas de uno. El principal es el global.
@@ -31,9 +32,7 @@ Este contexto crea dos cosas. El global Object , una variable especial this , un
 
 windows object es el global object en el browser.
 
-Cuando decimos global en javascript significa: 
-
--Not inside a function.
+>Cuando decimos global en javascript significa: **Not inside a function.**
 
 
 En JavaScript, cuando creas variables y funciones, y no estás dentro de una función, esas variables y funciones se adjuntan al objeto global.
