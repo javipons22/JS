@@ -529,48 +529,48 @@ ej .
 pone el contenido de 1.js arriba de 2.js entonces el resultado del console log es "dos", porque se reemplaza la variable
 
 para que no se reemplazen las variables en los frameworks generalmente hacen esto:
-
+ ```javascript
 window.libraryName = window.libraryName || "dos";
+ ```
 
 para que no se reemplaze la variable libraryName en caso de existir
 
 
-# -----------------------------------
-# 30. Objects and the Dot
 
+## 30. Objects and the Dot
 
-Un objeto es una coleccion de valores, puede tener properties y methods.
+* Un objeto es una coleccion de valores, puede tener properties y methods.
+* El objeto tiene un address y references a las properties y methods en memoria.
+* Se accede a estos properties y methods con el punto (.) y con brackets ( [] )
 
-El objeto tiene un address y references a las properties y methods en memoria.
-
-Se accede a estos properties y methods con el punto (.) y con brackets ( [] )
-
+ ```javascript
 var person = new Object();
 
 person["firstname"] = "Tony";
 
 var firstNameProperty = "firstname";
 
-console.log(person[firstNameProperty]); # dinamicamente podemos agregar un key a logear en el syntax de brackets. Dinamicamente significa poner el key en una variable y asignar esa variable al bracket. esto no funciona con el dot o punto , no se puede hacer:
+console.log(person[firstNameProperty]); // dinamicamente podemos agregar un key a logear en el syntax de brackets. Dinamicamente significa poner el key en una variable y asignar esa variable al bracket. esto no funciona con el dot o punto , no se puede hacer:
 
-person.firstNameProperty; # no anda
-person.firstname ; #si anda
+person.firstNameProperty; // no anda
+person.firstname ; // si anda
+ 
+ ```
+ ```javascript
 
-# -----------
-
-person.address = new Object(); #se crea un objeto dentro de otro objeto
+person.address = new Object(); // se crea un objeto dentro de otro objeto
 person.address.street = '111 main st.';
 
-person["address"]["street"] ; #tambien funciona
+person["address"]["street"] ; // tambien funciona
+ ```
+**SE RECOMIENDA USAR EL DOT**
 
-# SE RECOMIENDA USAR EL DOT
 
 
 
-# -----------------------------------
-# 31. Objects and Object Literals
-
-var person = {}; # esto es un object literal y es lo mismo a new Object(); usado en el ejemplo anterior
+## 31. Objects and Object Literals
+ ```javascript
+var person = {}; // esto es un object literal y es lo mismo a new Object(); usado en el ejemplo anterior
 
 
 var Tony = { 
@@ -581,15 +581,15 @@ var Tony = {
         city: 'New York',
         state: 'NY'
     }
-}; # esto es un object literal
+}; // esto es un object literal
 
 function greet(person) {
     console.log('Hi ' + person.firstname);
-} # llamo a la funcion y paso un objeto en la linea siguiente
+} // llamo a la funcion y paso un objeto en la linea siguiente
 
-greet(Tony); # se pasa un objeto 
+greet(Tony); // se pasa un objeto 
 
-greet({ # o se pasa un objeto "on the fly"
+greet({ // o se pasa un objeto "on the fly"
     firstname: 'Mary', 
     lastname: 'Doe' 
 });
@@ -597,16 +597,17 @@ greet({ # o se pasa un objeto "on the fly"
 Tony.address2 = { 
     street: '333 Second St.'
 }
+ ```
 
 
-# -----------------------------------
-# 32. Framework Aside: Faking Namespaces
+## 32. Framework Aside: Faking Namespaces
 
-Namespace : a container for variables and functions. Typically to keep variables and functions with the same name separate
+## Namespace
+a container for variables and functions. Typically to keep variables and functions with the same name separate
 
 javascript no tiene namespaces. otros lenguajes si. por eso en los frameworks hacen fake namespaces , es decir se crea un objeto para cuando la variable es la misma , y se le aplican valores distintos a la misma variable.
 
-
+ ```javascript
 var spanish = {};
 var english = {};
 
@@ -614,51 +615,53 @@ spanish.greet = 'Hola!';
 english.greet = 'Hi!';
 
 console.log(english);
+ ```
 
 
-# -----------------------------------
-# 33. JSON and Object Literals
+## 33. JSON and Object Literals
 
 
-JavaScript Object Notation
+### JSON : JavaScript Object Notation
 
 Antes para mandar datos a traves de internet se usaba XML. pero eran muchos caracteres. 
 en JSON los nombres de las propiedades estan entre "".
-
+ ```JSON
 {
     "firstname": "Mary",
     "isAProgrammer": true
 }
-
+```
 Todo JSON es valido en object literal , pero no todo object literal es valido JSON.
 
 para cualquier objeto se puede hacer
-
-JSON.stringify(object); #Esto le pone quotes ("") a los names y los pasa a string
-
+ ```javascript
+JSON.stringify(object); // Esto le pone quotes ("") a los names y los pasa a string
+ ```
 y para un string se puede hacer 
+ ```javascript
+JSON.parse('{ "name": "javier" }'); // esto convierte el json a un objeto
+ ```
 
-JSON.parse('{ "name": "javier" }'); # esto convierte el json a un objeto
 
+## 34. Functions are Objects
 
-# -----------------------------------
-# 34. Functions are Objects
-
-First class functions : Everything you can do with other types (ex. primitive types) you can do with functions. Assign them to variables, pass them around , create them on the fly.
+### First class functions 
+Everything you can do with other types (ex. primitive types) you can do with functions. Assign them to variables, pass them around , create them on the fly.
 
 Function es un tipo especial de objeto. se pueden poner primitives, objetos y funciones dentro de esta . 
 
-tiene un name que puede ser anonimo (opcional) y tiene un codigo que va a ser ejecutado (propiedad CODE) , este code es invocable.
+Tiene un **name** que puede ser anonimo (opcional) y tiene un codigo que va a ser ejecutado (propiedad **CODE**) , este code es **invocable**.
 
-las functions son como los objetos pero con la diferencia de tener un code (propiedad) , que va a ser ejecutado o invocado
+**las functions son como los objetos pero con la diferencia de tener un code (propiedad) , que va a ser ejecutado o invocado**
 
+ ```javascript
 function greet() {
     console.log('hi');   
 }
 
 greet.language = 'english';
-console.log(greet.language); # devuelve english. estamos asignando una propiedad a la funcion (ya que es un objeto)
-
+console.log(greet.language); // devuelve english. estamos asignando una propiedad a la funcion (ya que es un objeto)
+ ```
 
 # -----------------------------------
 # 35. Function Statements and Function Expressions
