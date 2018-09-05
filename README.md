@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 // 1 ----Syntax Parsers , Execution Context and lexical environments
@@ -1009,3 +1010,6 @@ Lo que permiten las IIFEs es evitar que al haber muchos archivos , el nombre de 
 
 
 
+=======
+# JS
+>>>>>>> d4257cd076bc02de2af1043eba12290302b02b1c
