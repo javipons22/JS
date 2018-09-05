@@ -3,18 +3,21 @@
 
 # 1 ----Syntax Parsers , Execution Context and lexical environments
 
-##---Syntax Parsers
+## Syntax Parsers
+
 A program that reads your code and determines what it does and if its grammar is valid
 
 a traves de compiladores, leen el codigo caracter por caracter y transforman en un lenguaje maquina
 
-##--- Lexical environment
+## Lexical environment
+
 Where something sits physically in the code you write
 
 donde escribis algo es importante
 define donde se pone en la memoria
 
-##--- Execution context
+## Execution context
+
 A wrapper to help manage the code that is running
 It can contain things beyond what youve written inyour code
 
@@ -24,12 +27,14 @@ Contiene el codigo y mas
 # 2 ---- Name/Value Pairs and Objects
 
 
-##Name / Value Pair
+## Name / Value Pair
+
 A name which maps to a unique value
 The name may be defined more than oncontextmenu, but can only have one value in any given context
 that value may be more name/value pairs
 
-##Object
+## Object
+
 A collection of name value pairs
 
 
@@ -49,20 +54,24 @@ Cuando decimos global en javascript significa:
 
 En JavaScript, cuando creas variables y funciones, y no estás dentro de una función, esas variables y funciones se adjuntan al objeto global.
 
-# -----------------------------------
+
 # 4 ----  The Execution Context - Creation and Hoisting
 
 El execution context es creado en dos partes. CREATION PHASE (crea el global object ,this y la referencia al outer environment.) Tambienhace un setup memory space for variables and functions (HOISTING).
 
 En el hoisting a las variables no les asigna el valor , sino que los deja como (UNDEFINED). 
 
-console.log(a); # devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
+console.log(a); 
+
+devuelve undefined (valor por defecto que el hoisting le da a las variables en la creation phase)
 
 var a = 'hello world';
 
 A las funciones las guarda en memoria por eso se pueden ejecutar antes de ser declaradas:
 
-a(); # se llama la funcion 
+a(); 
+
+se llama la funcion 
 
 function a() { # se declara la funcion
     console.log('hola'); 
@@ -70,14 +79,15 @@ function a() { # se declara la funcion
 
 esto devuelve el console log : hola sin problemas
 
-# -----------------------------------
 # 5 ----  Conceptual Aside: Javascript and 'undefined'
 
 undefined es un VALOR especial de javascript que significa que a la variable no se le asigno nada.
 
-var a; # su valor es undefined.
+var a; 
 
-# -----------------------------------
+su valor es undefined.
+
+
 # 6 ----   The Execution Context - Code Execution
 
 EXECUTION PHASE. tiene todos los elementos del CREATION PHASE y ejecuta el codigo linea por linea.
