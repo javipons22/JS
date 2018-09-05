@@ -663,131 +663,144 @@ greet.language = 'english';
 console.log(greet.language); // devuelve english. estamos asignando una propiedad a la funcion (ya que es un objeto)
  ```
 
-# -----------------------------------
-# 35. Function Statements and Function Expressions
+
+## 35. Function Statements and Function Expressions
 
 
-Expression : Unit of code that results in a value . it doesnt have to save inside a variable.
+### Expression
+Unit of code that results in a value . it doesnt have to save inside a variable.
+
+ ```javascript
 var a;
 a = 3;
-#devuelve 3 (es una expresion)
-
+// devuelve 3 (es una expresion)
+ ```
+  ```javascript
 var a;
 
 if (a === 3) {
-    #(if) es un statement , no devuelve valor
+    // (if) es un statement , no devuelve valor
 }
-
-#-----------
+```
+ ```javascript
 
 greet();
 
-function greet() { # es un function statement , no hace nada en la ejecucion salvo que sea invocada
+function greet() { // es un function statement , no hace nada en la ejecucion salvo que sea invocada
     console.log('hi');   
 } 
 
-var anonymousGreet = function() {# es una funcion anonima no tiene nombre despues de la palabra function
-    console.log('hi');   # es un function expression , en ejecucion se crea un objeto del tipo funcion y se aplica a la variable anonymuous greet. es expression porque termina en un valor , en este caso el objeto de la funcion anonima 
+var anonymousGreet = function() {// es una funcion anonima no tiene nombre despues de la palabra function
+    console.log('hi');   // es un function expression , en ejecucion se crea un objeto del tipo funcion y se aplica a la variable anonymuous greet. es expression porque termina en un valor , en este caso el objeto de la funcion anonima 
 }
 
-anonymousGreet(); # devuelve hi
+anonymousGreet(); // devuelve hi
 
 function log(a) {
    a();    
 }
 
 log(function() {
-    console.log('hi');  # se pueden pasar function statements a otras funciones  
+    console.log('hi');  // se pueden pasar function statements a otras funciones  
 });
 
-
-# -----------------------------------
-# 36. Conceptual Aside: By Value vs By Reference
+ ```
 
 
-mutate: change something. Immutable: cant change.
 
-Primitive types: by value
-Object type: by reference
+## 36. Conceptual Aside: By Value vs By Reference
 
-# by value (primitives)
-var a = 3; # setea un nuevo espacio en la memoria para la variable
+
+### mutate
+change something. Immutable: cant change.
+
+### Primitive types: by value
+### Object type: by reference
+
+### by value (primitives)
+
+ ```javascript
+var a = 3; // setea un nuevo espacio en la memoria para la variable
 var b;
 
-b = a; # asigna otro espacio en memoria para b con el valor mismo que a (es decir ahora hay dos variables en memoria iguales)
-a = 2; # cambia 2 en el valor de la memoria de a , b queda igual a 3 porque estaba en un bloque de memoria separado
+b = a; // asigna otro espacio en memoria para b con el valor mismo que a (es decir ahora hay dos variables en memoria iguales)
+a = 2; // cambia 2 en el valor de la memoria de a , b queda igual a 3 porque estaba en un bloque de memoria separado
 
 console.log(a);
 console.log(b);
 
-#el console.log devuelve 2 y 3
+// el console.log devuelve 2 y 3
+ ```
 
-# by reference (all objects (including functions))
-var c = { greeting: 'hi' }; # setea un nuevo espacio en la memoria para la variable
+### by reference (all objects (including functions))
+
+```javascript
+var c = { greeting: 'hi' }; // setea un nuevo espacio en la memoria para la variable
 var d;
 
-d = c; # asigna una referencia al espacio de memoria antes creado por c 
-c.greeting = 'hello'; # mutate
+d = c; // asigna una referencia al espacio de memoria antes creado por c 
+c.greeting = 'hello'; // mutate
 
 console.log(c);
 console.log(d);
 
-#el console.log devuelve 'hello' para los dos , c y d
-
+// el console.log devuelve 'hello' para los dos , c y d
+ ```
 # by reference (even as parameters)
+
+```javascript
 function changeGreeting(obj) {
-    obj.greeting = 'Hola'; # mutate   
+    obj.greeting = 'Hola'; //  mutate   
 }
 
 changeGreeting(d);
 console.log(c);
 console.log(d);
 
-#el console.log devuelve 'hola' para las dos variables
+// el console.log devuelve 'hola' para las dos variables
 
-# equals operator sets up new memory space (new address)
+// equals operator sets up new memory space (new address)
 c = { greeting: 'howdy' };
 console.log(c);
 console.log(d);
 
-# en este caso el console.log devuelve howdy y Hola porque al no existir el objeto que se asigno a c , el signo = setea un nuevo espacio en memoria para c , al cual d no hace referencia
+// en este caso el console.log devuelve howdy y Hola porque al no existir el objeto que se asigno a c , el signo = setea un nuevo espacio en memoria para c , al cual d no hace referencia
+```
 
 
 
-# -----------------------------------
-# 37. Objects, Functions, and 'this'
-
+## 37. Objects, Functions, and 'this'
 
 Cuando una funcion es invocada se hace un nuevo execution context , con variable environment , referencia al outer environment , y THIS
-
-# Global 
+```javascript
+// Global 
 console.log(this);
-# devuelve el window object
+// devuelve el window object
 
-#function statement
+// function statement
 function a() {
     console.log(this);
 }
 a();
-# devuelve el window object , cuando invocas una funcion todavia apunta al global object
+// devuelve el window object , cuando invocas una funcion todavia apunta al global object
 
-#function expression
+//function expression
 var b = function(){
     console.log(this);
 }
-# devuelve el window object tambien
-
-# ----------
+// devuelve el window object tambien
+```
+```javascript
 
 function a(){
-    this.newVariable = 'hello'; # se hace 'attach' de la variable al global
+    this.newVariable = 'hello'; // se hace 'attach' de la variable al global
 }
 a();
 
 console.log(newVariable);
-#devuelve la variable en el global
+// devuelve la variable en el global
 
-#Objetos
+// Objetos
 var c = {
     name : 'The c object',
     log: function() {
@@ -795,33 +808,36 @@ var c = {
     }
 }
 
-c.log(); #devuelve el objeto como this , en objetos this hace referencia a el objeto en si a diferencia de las funciones que hace referencia al global.
+c.log(); // devuelve el objeto como this , en objetos this hace referencia a el objeto en si a diferencia de las funciones que hace referencia al global.
+```
 
-#----------
+**Problema:**
+
+```javascript
 
 var c = {
     name: 'The c object',
     log: function() {
         
         this.name = 'Updated c object';
-        console.log(this); # devuelve el objeto con el name updated c object
+        console.log(this); // devuelve el objeto con el name updated c object
         
         var setname = function(newname) {
-            this.name = newname;   # en este caso en una funcion dentro de un metodo de un objeto , this hace referencia al global
+            this.name = newname;   // en este caso en una funcion dentro de un metodo de un objeto , this hace referencia al global
         }
-        setname('Updated again! The c object'); # esto no devuelve nada
-        console.log(this); # devuelve Updated c object
+        setname('Updated again! The c object'); // esto no devuelve nada
+        console.log(this); // devuelve Updated c object
     }
 }
 
 c.log();
-
-# Solucion: 
-
+```
+**Solucion:** 
+```javascript
 var c = {
     name: 'The c object',
     log: function() {
-        var self = this; # asignamos una variable a this para que cuando busque en el contexto lexico self haga referencia al objeto
+        var self = this; // asignamos una variable a this para que cuando busque en el contexto lexico self haga referencia al objeto
         
         self.name = 'Updated c object';
         console.log(self);
@@ -835,6 +851,8 @@ var c = {
 }
 
 c.log();
+
+```
 
 # -----------------------------------
 # 38. Conceptual Aside: Arrays - Collections of Anything
